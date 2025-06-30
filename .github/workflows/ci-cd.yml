@@ -23,6 +23,9 @@ jobs:
       - name: Lint
         run: npx eslint . || true # Ajoute eslint si tu veux un vrai lint
 
+      - name: Fix jest permissions
+        run: chmod +x ./node_modules/.bin/jest
+
       - name: Run tests
         run: npm test
 
