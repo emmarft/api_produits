@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/database');
 const productRoutes = require('./routes/products.routes');
@@ -19,5 +20,8 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Erreur serveur', error: err.message });
 });
+
+const authRoutes = require('./routes/auth.routes');
+app.use('/api/auth', authRoutes);
 
 module.exports = app;
