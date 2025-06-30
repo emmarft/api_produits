@@ -2,9 +2,10 @@
   "name": "api-produits",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "node app.js"
+    "dev": "nodemon src/server.js",
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",
