@@ -2,6 +2,7 @@ const request = require('supertest');
 const mongoose = require('mongoose');
 const app = require('../src/app');
 const Product = require('../src/models/product.model');
+const { closeDB } = require('../src/config/database');
 
 let token = ''; // À remplacer par un vrai token JWT si auth requise
 
@@ -13,7 +14,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await mongoose.connection.close();
+  await closeDB();
 });
 
 afterEach(async () => {

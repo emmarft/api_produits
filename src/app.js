@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const connectDB = require('./config/database');
+const { connectDB } = require('./config/database');
 const productRoutes = require('./routes/products.routes');
 const cors = require('cors');
 const helmet = require('helmet');
