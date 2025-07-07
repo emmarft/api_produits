@@ -6,13 +6,6 @@ const { closeDB } = require('../src/config/database');
 
 let token = ''; // À remplacer par un vrai token JWT si auth requise
 
-beforeAll(async () => {
-  // Connexion à la base de test
-  await mongoose.connect(process.env.MONGO_URI);
-  // Génère un token JWT si nécessaire
-  // token = 'Bearer ...';
-});
-
 afterAll(async () => {
   await closeDB();
 });
