@@ -14,6 +14,20 @@ afterEach(async () => {
   await Product.deleteMany();
 });
 
+beforeAll(async () => {
+  // Crée un utilisateur de test
+  await request(app)
+    .post('/api/auth/register')
+    .send({ email: 'test@test.com', password: 'test123' });
+
+  // Connecte l'utilisateur pour obtenir un token JWT
+  const res = await request(app)
+    .post('/api/auth/login')
+    .send({ email: 'test@test.com', password: 'test123' });
+
+  token = `Bearer ${res.body.token}`;
+});
+
 describe('Produits API', () => {
   it('GET /api/products doit retourner un tableau', async () => {
     const res = await request(app).get('/api/products');
