@@ -25,7 +25,7 @@ describe('Produits API', () => {
     const data = { name: 'Test', description: 'desc', price: 10, category: 'cat', stock: 5 };
     const res = await request(app)
       .post('/api/products')
-      // .set('Authorization', token) // décommente si auth requise
+      .set('Authorization', token) // décommenté pour l'auth
       .send(data);
     expect(res.statusCode).toBe(201);
     expect(res.body.name).toBe('Test');
@@ -42,7 +42,7 @@ describe('Produits API', () => {
     const prod = await Product.create({ name: 'Test', description: 'desc', price: 10, category: 'cat', stock: 5 });
     const res = await request(app)
       .put(`/api/products/${prod._id}`)
-      // .set('Authorization', token)
+      .set('Authorization', token) // décommenté pour l'auth
       .send({ name: 'Modifié' });
     expect(res.statusCode).toBe(200);
     expect(res.body.name).toBe('Modifié');
@@ -52,7 +52,7 @@ describe('Produits API', () => {
     const prod = await Product.create({ name: 'Test', description: 'desc', price: 10, category: 'cat', stock: 5 });
     const res = await request(app)
       .delete(`/api/products/${prod._id}`)
-      // .set('Authorization', token)
+      .set('Authorization', token) // décommenté pour l'auth
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toMatch(/supprimé/);
   });
