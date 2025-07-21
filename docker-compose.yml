@@ -13,10 +13,10 @@ services:
   api:
     build: .
     ports:
-      - "3000:3000"
+      - "3001:3001"
     environment:
       - MONGO_URI=mongodb://mongo:27017/products
-      - PORT=3000
+      - PORT=3001
       - JWT_SECRET=Mspr2ApiProducts
     depends_on:
       - mongo
