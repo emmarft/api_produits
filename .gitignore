@@ -1,0 +1,33 @@
+# Dependencies and AdonisJS build
+node_modules
+build
+tmp
+pnpm-lock.yaml
+logs/*
+
+# Secrets
+.env
+.env.example
+.env.test
+.env.local
+.env.production.local
+.env.development.local
+
+# Frontend assets compiled code
+public/assets
+
+# Build tools specific
+npm-debug.log
+yarn-error.log
+*.log
+
+# Editors specific
+.fleet
+.idea
+.vscode
+
+# Platform specific
+.DS_Store
+#grafana
+dashboard_grafana.json
+logs/api.log

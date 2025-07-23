@@ -4,9 +4,31 @@ const { connectDB } = require('./config/database');
 const productRoutes = require('./routes/products.routes');
 const cors = require('cors');
 const helmet = require('helmet');
+const { connectProducer } = require('./kafka/producer');
+const { connectConsumer, subscribeToTopics } = require('./kafka/consumer');
 
 const app = express();
-connectDB();
+
+// Initialisation des connexions
+const initializeConnections = async () => {
+  try {
+    // Connexion à MongoDB
+    await connectDB();
+    console.log('✅ MongoDB connecté');
+    
+    // Connexion à Kafka
+    await connectProducer();
+    await connectConsumer();
+    await subscribeToTopics();
+    console.log('✅ Kafka initialisé');
+  } catch (error) {
+    console.error('❌ Erreur d\'initialisation:', error);
+    process.exit(1);
+  }
+};
+
+// Initialiser les connexions
+initializeConnections();
 
 app.use(express.json());
 app.use(cors());
